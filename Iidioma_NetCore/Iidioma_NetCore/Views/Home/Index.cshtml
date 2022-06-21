@@ -3,13 +3,11 @@
 }
 
 <!--
-
-        //A configuração abaixo, utiliza o arquivo idioma.resx para obter as traduções, no caso o IStringLocalizer<SharedResource>, porém pode ser trabalhoso ter que editar arquivo por arquivo para adicionar uma nova chave
-        //a forma usada agora é obtida os dados através de um arquivo json, onde todos os idioma são contidos dentro dele services.AddJsonLocalization();
-        // porém, ambas as funcionalidades atendem ...
+            Config para usar o arquivo RESX, um arquivo para cada idioma
             @inject IStringLocalizer<SharedResource> Localizer
 -->
 
+<!-- Config para usar o arquivo json, um único arquivo com todos os idiomas -->
 @inject IStringLocalizer Localizer
 
 <div class="text-center">

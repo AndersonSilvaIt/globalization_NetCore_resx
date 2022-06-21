@@ -1,0 +1,21 @@
+﻿@model Iidioma_NetCore.ViewModel.IdiomaDataAnotationVM
+
+@{
+    ViewData["Title"] = ViewBag.PageTitle;
+}
+
+<form method="post">
+    <div class="form-group">
+        <label asp-for="Nome"></label>
+        <input asp-for="Nome" class="form-control">
+        <span asp-validation-for="Idade" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Idade"></label>
+        <input asp-for="Idade" class="form-control">
+        <span asp-validation-for="Idade" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary btn-block">Registrar</button>
+    </div>
+</form>

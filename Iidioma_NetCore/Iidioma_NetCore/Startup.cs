@@ -1,16 +1,13 @@
 using Iidioma_NetCore.Resources;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Localization;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using System;
+using Microsoft.Extensions.Localization;
 using System.Collections.Generic;
 using System.Globalization;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace Iidioma_NetCore
 {
@@ -25,12 +22,26 @@ namespace Iidioma_NetCore
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddJsonLocalization();
+            /*
+             Config para usar o arquivo RESX, um arquivo para cada idioma 
+                services.AddMvc()
+                .AddDataAnnotationsLocalization(options => {
+                    options.DataAnnotationLocalizerProvider = (type, factory) =>
+                        factory.Create(typeof(SharedResource));
+                });
+            */
+            
+            //Config para usar o arquivo json, um único arquivo com todos os idiomas
 
-            //A configuração abaixo, utiliza o arquivo idioma.resx para obter as traduções, porém pode ser trabalhoso ter que editar arquivo por arquivo para adicionar uma nova chave
-            //a forma usada agora é obtida os dados através de um arquivo json, onde todos os idioma são contidos dentro dele services.AddJsonLocalization();
-            // porém, ambas as funcionalidades atendem ...
-            //services.AddLocalization();
+            services.AddJsonLocalization();
+            var sp = services.BuildServiceProvider();
+
+            services.AddMvc()
+                .AddDataAnnotationsLocalization(options => {
+                    options.DataAnnotationLocalizerProvider = (type, factory) =>
+                        sp.GetService<IStringLocalizer>();
+                });
+
             services.AddControllersWithViews();
         }
 

@@ -6,5 +6,13 @@
   "Welcome_Title": {
     "en-US": "Welcome - JSON",
     "pt-BR": "Bem-vindo - JSON"
+  },
+  "Name": {
+    "en-US": "Name",
+    "pt-BR": "Nome"
+  },
+  "Age": {
+    "en-US": "Age",
+    "pt-BR": "Idade"
   }
 }
