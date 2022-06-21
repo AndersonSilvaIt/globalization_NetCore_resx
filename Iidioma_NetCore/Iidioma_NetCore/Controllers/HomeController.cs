@@ -1,25 +1,22 @@
 ﻿using Iidioma_NetCore.Models;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
+using Microsoft.Extensions.Localization;
 using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace Iidioma_NetCore.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        private readonly IStringLocalizer _localizer;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(IStringLocalizer<SharedResource> localizer)
         {
-            _logger = logger;
+            _localizer = localizer;
         }
 
         public IActionResult Index()
         {
+            ViewBag.PageTitle = _localizer["Index_Page_Title"];
             return View();
         }
 
