@@ -1,3 +1,4 @@
+using Iidioma_NetCore.Resources;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -24,7 +25,12 @@ namespace Iidioma_NetCore
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddLocalization();
+            services.AddJsonLocalization();
+
+            //A configuração abaixo, utiliza o arquivo idioma.resx para obter as traduções, porém pode ser trabalhoso ter que editar arquivo por arquivo para adicionar uma nova chave
+            //a forma usada agora é obtida os dados através de um arquivo json, onde todos os idioma são contidos dentro dele services.AddJsonLocalization();
+            // porém, ambas as funcionalidades atendem ...
+            //services.AddLocalization();
             services.AddControllersWithViews();
         }
 

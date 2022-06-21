@@ -2,7 +2,15 @@
     ViewData["Title"] = ViewBag.PageTitle;
 }
 
-@inject IStringLocalizer<SharedResource> Localizer
+<!--
+
+        //A configuração abaixo, utiliza o arquivo idioma.resx para obter as traduções, no caso o IStringLocalizer<SharedResource>, porém pode ser trabalhoso ter que editar arquivo por arquivo para adicionar uma nova chave
+        //a forma usada agora é obtida os dados através de um arquivo json, onde todos os idioma são contidos dentro dele services.AddJsonLocalization();
+        // porém, ambas as funcionalidades atendem ...
+            @inject IStringLocalizer<SharedResource> Localizer
+-->
+
+@inject IStringLocalizer Localizer
 
 <div class="text-center">
     <h1 class="display-4">@Localizer["Welcome_Title"]</h1>
